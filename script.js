@@ -30,25 +30,36 @@ class Calculator {
         if (this.currentOperand == '') return
         this.operation = operation
         this.compute()
+        if (computedTotal_bool) {
+            this.previousOperand = this.total + " " + this.operation.toString() + " "
+            this.currentOperand = ''
+            return
+        }
         this.previousOperand += this.currentOperand + " " + this.operation.toString() + " "
-        //this.previousOperand = this.previousOperand + " " + this.operation.toString() + " "
-        //this.operation = operation
-        //this.previousOperand += this.currentOperand
         this.currentOperand = ''
     }
     
     compute() {
+        const previous = parseFloat(this.previousOperand)
+        const current = parseFloat(this.currentOperand)
+
+        if (computedTotal_bool) return
+
+        //not sure about this 
         if (this.previousOperand == '') {
-            this.total = parseFloat(this.currentOperand)
+            this.total = current
             return
         }
         if (this.currentOperand == ''){
-            this.total = parseFloat(this.previousOperand) //*** */
+            this.total = previous
         }
+        //not sure about this  ^^
+        
+        if (isNaN(previous) || isNaN(current)) return
+        
         switch(this.operation){
             case '÷':
                 this.total = (this.total) / parseFloat(this.currentOperand)
-                //textTest.innerText = this.total.toString() + "   " + (this.currentOperand)
                 break
             case 'x':
                 this.total = this.total * parseFloat(this.currentOperand)
@@ -59,35 +70,22 @@ class Calculator {
             case '+':
                 this.total = this.total + parseFloat(this.currentOperand)
                 break
-
-            // case '÷':
-            //     return parseFloat(this.previousOperand) / parseFloat(this.currentOperand)
-            //     break
-            // case 'x':
-            //     return parseFloat(this.previousOperand) * parseFloat(this.currentOperand)
-            //     break
-            // case '-':
-            //     return parseFloat(this.previousOperand) - parseFloat(this.currentOperand)
-            //     break
-            // case '+':
-            //     return parseFloat(this.previousOperand) + parseFloat(this.currentOperand)
-            //     break
         }
     }
 
-    computeTotal() {
-        //display Total
-        textTest.innerText = this.total
-        this.currentOperand = this.total
-        this.total = 0
-    }
+    // computeTotal() {
+    //     //display Total
+    //     textTest.innerText = this.total
+    //     this.currentOperand = this.total
+    //     this.total = 0
+    // }
     
     updateDisplay(){
         computedTotal_bool = false
         this.currentOperandTextElement.innerText = this.currentOperand
         this.previousOperandTextElement.innerText = this.previousOperand
-        //** */
-        textTest.innerText = this.total
+        //temp testing
+        //textTest.innerText = this.total
     }
 }
 
@@ -142,10 +140,7 @@ equalsButton.addEventListener('click', button => {
     if (computedTotal_bool) return
     calculator.previousOperand += calculator.currentOperand + " ="
     calculator.compute()
-    //calculator.currentOperand= calculator.compute()
     calculator.currentOperand = calculator.total
-    //calculator.total = 0
-    //calculator.computeTotal()
     calculator.updateDisplay()
     computedTotal_bool = true
 })

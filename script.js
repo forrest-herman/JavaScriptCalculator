@@ -25,6 +25,10 @@ class Calculator {
         if(computedTotal_bool) this.clear()
         this.currentOperand = this.currentOperand.toString() + number.toString()
     }
+
+    toggleSign(){
+        this.currentOperand = -this.currentOperand
+    }
     
     chooseOperation(operation){
         if (this.currentOperand == '') return
@@ -102,14 +106,17 @@ const delButton = document.querySelector('[data-del]')
 const acButton = document.querySelector('[data-ac]')
 const previousOperandTextElement = document.querySelector('[data-prev-operand]')
 const currentOperandTextElement = document.querySelector('[data-current-operand]')
-const textTest = document.querySelector('[data-test]')
+const plusMinusButton = document.querySelector('[data-plus-minus]')
+
+//TESTING
+//const textTest = document.querySelector('[data-test]')
+//textTest.innerText = calculator.total
 
 //JS variables
 var computedTotal_bool = false
 
 const calculator = new Calculator(previousOperandTextElement,currentOperandTextElement)
 
-textTest.innerText = calculator.total
 
 //numbers
 numberButtons.forEach(button => {
@@ -149,6 +156,11 @@ equalsButton.addEventListener('click', button => {
     computedTotal_bool = true
 })
 
+
+plusMinusButton.addEventListener('click', button => {
+    calculator.toggleSign()
+    calculator.updateDisplay()
+})
 
 // +/- tbc...
 

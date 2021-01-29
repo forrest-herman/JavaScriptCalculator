@@ -8,13 +8,13 @@ body {
     padding: 0;
     margin: 0;
     background: linear-gradient(-45deg, #7A003C, #FDBF57);
+    min-height: 100vh;
+    align-content: center;
 }
 
 .calculator-grid {
     display: grid;
-    justify-content: center;
-    align-content: center;
-    min-height: 100vh;
+    justify-content: center;   
     grid-template-columns: repeat(4,100px);
     grid-template-rows: minmax(120px, auto) repeat(5,100px);
 }
@@ -57,6 +57,16 @@ body {
     font-size: 2.5rem;
 }
 
+.title{
+    font-size: 3rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    text-align: center;
+    padding-top:10vh;
+    padding-bottom:7vh;
+    padding-left: 10%;
+    padding-right: 10%;
+}
 
 .test {
     font-size: 2rem;

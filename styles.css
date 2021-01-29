@@ -69,8 +69,9 @@ body {
 }
 
 .test {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: white;
     text-align: center;
     padding-top: 10%;
+    padding-bottom:7vh;
 }

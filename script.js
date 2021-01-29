@@ -27,7 +27,9 @@ class Calculator {
     }
 
     toggleSign(){
+        if (computedTotal_bool || this.currentOperand === '') return
         this.currentOperand = -this.currentOperand
+        this.updateDisplay()
     }
     
     chooseOperation(operation){
@@ -63,7 +65,7 @@ class Calculator {
         
         switch(this.operation){
             case '÷':
-                this.total = (this.total) / current
+                this.total = this.total / current
                 break
             case 'x':
                 this.total = this.total * current
@@ -93,7 +95,7 @@ class Calculator {
         this.currentOperandTextElement.innerText = this.currentOperand
         this.previousOperandTextElement.innerText = this.previousOperand
         //temp testing
-        //textTest.innerText = this.total
+        textTest.innerText = this.total
     }
 }
 
@@ -108,14 +110,18 @@ const previousOperandTextElement = document.querySelector('[data-prev-operand]')
 const currentOperandTextElement = document.querySelector('[data-current-operand]')
 const plusMinusButton = document.querySelector('[data-plus-minus]')
 
-//TESTING
-//const textTest = document.querySelector('[data-test]')
-//textTest.innerText = calculator.total
+
 
 //JS variables
 var computedTotal_bool = false
 
 const calculator = new Calculator(previousOperandTextElement,currentOperandTextElement)
+
+
+// TESTING ---------------
+const textTest = document.querySelector('[data-test]')
+textTest.innerText = calculator.total
+// -----------------------
 
 
 //numbers
@@ -158,8 +164,7 @@ equalsButton.addEventListener('click', button => {
 
 
 plusMinusButton.addEventListener('click', button => {
-    calculator.toggleSign()
-    calculator.updateDisplay()
+    calculator.toggleSign() //toggles sign and updates display
 })
 
 // +/- tbc...

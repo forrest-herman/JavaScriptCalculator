@@ -34,7 +34,6 @@ class Calculator {
     
     chooseOperation(operation){
         if (this.currentOperand == '') return
-        this.operation = operation
         
         if (computedTotal_bool) {
             this.previousOperand = this.total + " " + this.operation.toString() + " "
@@ -42,6 +41,8 @@ class Calculator {
             return
         }
         else this.compute()
+
+        this.operation = operation
 
         this.previousOperand += this.currentOperand + " " + this.operation.toString() + " "
         this.currentOperand = ''
@@ -77,12 +78,13 @@ class Calculator {
                 this.total = this.total + current
                 break
             default:
+                this.total = current
                 return
         }
     }
 
 
-    // computeTotal() {
+    // computeBEDMAS() {
     //     //display Total
     //     textTest.innerText = this.total
     //     this.currentOperand = this.total

@@ -38,6 +38,7 @@ class Calculator {
         if (this.currentOperand == '') return
         
         if (computedTotal_bool) {
+            this.operation = operation
             this.previousOperand = this.total + " " + this.operation.toString() + " "
             this.currentOperand = ''
             return
@@ -122,7 +123,7 @@ class Calculator {
         this.currentOperandTextElement.innerText = this.formatDisplay(this.currentOperand)
         this.previousOperandTextElement.innerText = this.previousOperand
         //temp testing
-        //textTest.innerText = this.total
+        // textTest.innerText = this.operation //this.total
     }
 }
 
@@ -147,7 +148,7 @@ const calculator = new Calculator(previousOperandTextElement,currentOperandTextE
 
 // TESTING ---------------
 // const textTest = document.querySelector('[data-test]')
-// textTest.innerText = calculator.total
+// textTest.innerText = calculator.operation //calculator.total
 // -----------------------
 
 

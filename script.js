@@ -92,11 +92,34 @@ class Calculator {
     //     this.currentOperand = this.total
     //     this.total = 0
     // }
-    
+
+
+    formatDisplay(number){
+        const integer = parseFloat(number.toString().split('.')[0])
+        const decimal = number.toString().split('.')[1]
+        let integerDisplay
+        if (isNaN(integer)){
+            integerDisplay = ''
+        }
+        else {
+            integerDisplay = integer.toLocaleString('en', {maximumFractionDigits:0}).toString()
+        }
+        if(decimal != null){
+            return integerDisplay + '.' + decimal
+        }else return integerDisplay
+        
+
+        // if (this.currentOperand.length >= 4){
+        //     for (var i = this.currentOperand.length; i>0; i=i-3){
+        //         formattedText = this.currentOperand.slice(0,i) + ',' + this.currentOperand.slice(i, this.currentOperand.length)
+        //     }
+        // }
+    }
+
 
     updateDisplay(){
         computedTotal_bool = false
-        this.currentOperandTextElement.innerText = this.currentOperand
+        this.currentOperandTextElement.innerText = this.formatDisplay(this.currentOperand)
         this.previousOperandTextElement.innerText = this.previousOperand
         //temp testing
         //textTest.innerText = this.total

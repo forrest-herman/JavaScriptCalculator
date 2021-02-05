@@ -22,7 +22,9 @@ class Calculator {
         if(number == '.' && this.currentOperand.includes('.')) {
             return
         }
-        if(computedTotal_bool) this.clear()
+        if(computedTotal_bool) {
+            this.clear()
+        }
         this.currentOperand = this.currentOperand.toString() + number.toString()
     }
 
@@ -97,7 +99,7 @@ class Calculator {
         this.currentOperandTextElement.innerText = this.currentOperand
         this.previousOperandTextElement.innerText = this.previousOperand
         //temp testing
-        textTest.innerText = this.total
+        //textTest.innerText = this.total
     }
 }
 

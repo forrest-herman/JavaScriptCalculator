@@ -121,8 +121,8 @@ const calculator = new Calculator(previousOperandTextElement,currentOperandTextE
 
 
 // TESTING ---------------
-const textTest = document.querySelector('[data-test]')
-textTest.innerText = calculator.total
+// const textTest = document.querySelector('[data-test]')
+// textTest.innerText = calculator.total
 // -----------------------
 
 
